@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'backendIDAQ_rest.apps.BackendidaqRestConfig'
 ]
 
 MIDDLEWARE = [
@@ -73,10 +74,32 @@ WSGI_APPLICATION = 'iDAQ.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+import os
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'OPTIONS': {
+#             'read_default_file': str(os.path.join(os.getcwd(),'mysql_details/connection.cnf')) ,
+#             'init_command' : 'SET default_storage_engine = INNODB',
+#         },
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+       	'ENGINE': 'django.db.backends.mysql',
+       	'NAME': 'iDAQ_DB', 
+       	'USER': 'root',
+      	'PASSWORD': 'Tejas@12345',
+    	'HOST': '127.0.0.1',
+       	'PORT': '3306',
     }
 }
 
