@@ -31,5 +31,18 @@ class UnitTable(models.Model):
     unitID = models.UUIDField()
     unitName = models.CharField(max_length=20)
     unitConversionFactor = models.FloatField()
-    
+
+class ShiftTable(models.Model):
+    ShiftID = models.UUIDField()
+    StartShiftTime = models.TimeField()
+    EndShiftTime = models.TimeField()
+    ShiftNumber = models.IntegerField()
+
+class DataTable(models.Model):
+    DataID = models.UUIDField()
+    plcDataAddrID = models.ForeignKey(PlcAddress,on_delete=models.CASCADE)    
+    ShiftID = models.ForeignKey(ShiftTable,on_delete=models.CASCADE)    
+    DataValue = models.FloatField()
+    AlarmStatus = models.BooleanField()
+    DateTime = models.DateTimeField()
 
