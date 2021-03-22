@@ -45,18 +45,15 @@ class DataTable(models.Model):
     DataValue = models.FloatField()
     AlarmStatus = models.BooleanField()
     DateTime = models.DateTimeField()
-<<<<<<< HEAD
 
-class UserManagement(models.model):
+class UserManagement(models.Model):
     UserID = models.UUIDField()
     Username = models.CharField(max_length=30)
     PassWord = models.CharField(max_length=10)
     UserLevelID = models.ForeignKey(UserLevelID,on_delete=models.CASCADE)
     
-=======
->>>>>>> main
 
-class UserLevel(models.model):
+class UserLevel(models.Model):
     LevelNameID = models.UUIDField()
-    LevelName = models.CharField(max_length=20)
+    LevelName = models.CharField(max_length=30)
     LevelNamePriority = models.SmallIntegerField()
