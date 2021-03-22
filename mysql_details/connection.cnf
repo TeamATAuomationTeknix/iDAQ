@@ -1,5 +1,5 @@
 [client]
 database = iDAQ_DB
 user = root
-password = Tejas@12345
+password = teamat
 default-character-set = utf8
