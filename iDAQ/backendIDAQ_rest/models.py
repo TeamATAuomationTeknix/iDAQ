@@ -54,6 +54,6 @@ class UserManagement(models.Model):
     
 
 class UserLevel(models.Model):
-    LevelNameID = models.UUIDField()
+    UserLevelID = models.UUIDField()
     LevelName = models.CharField(max_length=30)
     LevelNamePriority = models.SmallIntegerField()
