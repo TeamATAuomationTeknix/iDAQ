@@ -1,5 +1,0 @@
-[client]
-database = iDAQ_DB
-user = root
-password = teamat
-default-character-set = utf8
