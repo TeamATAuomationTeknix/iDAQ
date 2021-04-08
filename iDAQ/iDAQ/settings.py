@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'iDAQ.wsgi.application'
 DATABASES = {
     'default': {
        	'ENGINE': 'django.db.backends.mysql',
-       	'NAME': 'idaq_db', 
+       	'NAME': 'idaq_database', 
        	'USER': 'root',
       	'PASSWORD': 'teamat',
     	'HOST': '127.0.0.1',
