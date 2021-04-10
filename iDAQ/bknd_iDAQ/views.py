@@ -208,4 +208,3 @@ class user_mng_API(APIView):
         usermng.delete()
         return Response({'Shift Deleted Successfully'})
     
-
