@@ -28,6 +28,8 @@ class shift_table(models.Model):
     StartShiftTime = models.TimeField()
     EndShiftTime = models.TimeField()
     ShiftNumber = models.IntegerField()
+# Time formate is, if you want to say 2pm then it must be 14:00:00.000000
+
 
 class mst_data(models.Model):
     id = models.AutoField(auto_created = True,primary_key = True,serialize = False, verbose_name ='ID')
