@@ -22,6 +22,20 @@ class mst_dev_conn_API(APIView):
             return Response({'Device Added Successfully'}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    def patch(self, request,pk=None,format = None):
+        id = pk
+        devconn = mst_dev_conn.objects.get(pk=id)
+        serializer = mst_dev_conn_serializer(devconn, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'Device Updated Successfully'})
+        return Response(serializer.errors)
+
+    def delete(self, request,pk,format = None):
+        id = pk
+        devconn = mst_dev_conn.objects.get(pk=id)
+        devconn.delete()
+        return Response({'Device Deleted Successfully'})
 
 class unit_table_API(APIView):
     def get(self, request,pk=None,format = None):
@@ -40,6 +54,21 @@ class unit_table_API(APIView):
             serializer.save()
             return Response({'Unit Added Successfully'}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def patch(self, request,pk=None,format = None):
+        id = pk
+        unit = units_table.objects.get(pk=id)
+        serializer = units_table_serializer(unit, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'Unit Updated Successfully'})
+        return Response(serializer.errors)
+
+    def delete(self, request,pk,format = None):
+        id = pk
+        unit = units_table.objects.get(pk=id)
+        unit.delete()
+        return Response({'Unit Deleted Successfully'})
 
 class mst_dev_addr_API(APIView):
     # def get(self, request,pk=None,format = None):  # if want data wrt pk then uncomment it and also change the url
@@ -64,6 +93,21 @@ class mst_dev_addr_API(APIView):
             return Response({'Device Address Added Successfully'}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    def patch(self, request,pk=None,format = None):
+        id = pk
+        devaddr = mst_dev_addr.objects.get(pk=id)
+        serializer = mst_dev_addr_serializer(devaddr, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'Device Address Updated Successfully'})
+        return Response(serializer.errors)
+
+    def delete(self, request,pk,format = None):
+        id = pk
+        devaddr = mst_dev_addr.objects.get(pk=id)
+        devaddr.delete()
+        return Response({'Device Address Deleted Successfully'})
+
 class shift_table_API(APIView):
     def get(self, request,ShiftNumber=None,format = None):
         id = ShiftNumber # here we are not taking data by pk instead we use shiftnumber
@@ -83,6 +127,21 @@ class shift_table_API(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 # Time formate is, if you want to say 2pm then it must be 14:00:00.000000
 
+    def patch(self, request,pk=None,format = None):
+        id = pk
+        shift = shift_table.objects.get(pk=id)
+        serializer = shift_table_serializer(shift, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'Shift Updated Successfully'})
+        return Response(serializer.errors)
+
+    def delete(self, request,pk,format = None):
+        id = pk
+        shift = shift_table.objects.get(pk=id)
+        shift.delete()
+        return Response({'Shift Address Deleted Successfully'})
+
 class user_level_API(APIView):
     def get(self, request,pk=None,format = None):
         id = pk
@@ -100,6 +159,21 @@ class user_level_API(APIView):
             serializer.save()
             return Response({'User Level Added Successfully'}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def patch(self, request,pk=None,format = None):
+        id = pk
+        userlevel = user_level.objects.get(pk=id)
+        serializer = user_level_serializer(userlevel, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'User Level Updated Successfully'})
+        return Response(serializer.errors)
+
+    def delete(self, request,pk,format = None):
+        id = pk
+        userlevel = user_level.objects.get(pk=id)
+        userlevel.delete()
+        return Response({'Shift Address Deleted Successfully'})
 
 class user_mng_API(APIView):
     def get(self, request,pk=None,format = None):
@@ -119,4 +193,19 @@ class user_mng_API(APIView):
             return Response({'User Added Successfully'}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    def patch(self, request,pk=None,format = None):
+        id = pk
+        usermng = user_mng.objects.get(pk=id)
+        serializer = user_mng_serializer(usermng, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'User Level Updated Successfully'})
+        return Response(serializer.errors)
+
+    def delete(self, request,pk,format = None):
+        id = pk
+        usermng = user_mng.objects.get(pk=id)
+        usermng.delete()
+        return Response({'Shift Deleted Successfully'})
+    
 
