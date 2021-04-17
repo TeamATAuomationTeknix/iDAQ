@@ -49,3 +49,14 @@ class user_mng(models.Model):
     user_level_id = models.ForeignKey(user_level, on_delete=models.CASCADE)
     Username = models.CharField(max_length=30)
     PassWord = models.CharField(max_length=10)
+
+
+class data_to_db(models.Model):
+    id = models.AutoField(auto_created = True,primary_key = True,serialize = False, verbose_name ='ID')
+    a =  models.IntegerField()
+    b =  models.IntegerField()
+    c =  models.IntegerField()
+    d =  models.IntegerField()
+    e =  models.IntegerField()
+    f =  models.IntegerField()
+

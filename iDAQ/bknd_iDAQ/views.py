@@ -173,7 +173,7 @@ class user_level_API(APIView):
         id = pk
         userlevel = user_level.objects.get(pk=id)
         userlevel.delete()
-        return Response({'Shift Address Deleted Successfully'})
+        return Response({'User Level Deleted Successfully'})
 
 class user_mng_API(APIView):
     def get(self, request,pk=None,format = None):
@@ -199,12 +199,12 @@ class user_mng_API(APIView):
         serializer = user_mng_serializer(usermng, data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response({'User Level Updated Successfully'})
+            return Response({'User Updated Successfully'})
         return Response(serializer.errors)
 
     def delete(self, request,pk,format = None):
         id = pk
         usermng = user_mng.objects.get(pk=id)
         usermng.delete()
-        return Response({'Shift Deleted Successfully'})
+        return Response({'User Deleted Successfully'})
     

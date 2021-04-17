@@ -37,4 +37,9 @@ class user_mng_serializer(serializers.ModelSerializer):
         model = user_mng
         fields = ['id','user_level_id','Username','PassWord']
 
+class data_to_db_serializer(serializers.ModelSerializer):
+    class Meta:
+        model = data_to_db
+        fields = ['id','a','b','c','d','e','f']
+
     
