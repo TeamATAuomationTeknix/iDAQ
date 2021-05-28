@@ -5,11 +5,11 @@ import mysql.connector
 from connector import MySql
 
 c = ModbusClient(host="localhost", port=502, unit_id=1, auto_open=True) #make the unit id and device id in modsim same
-c = ModbusClient()
-c.host("localhost")
-c.port(502)
-c.unit_id(1)
-c.open()
+# c = ModbusClient()
+# c.host("localhost")
+# c.port(502)
+# c.unit_id(1)
+# c.open()
 
 def readData():
     db_addrList = [0,6] 

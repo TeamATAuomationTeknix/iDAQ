@@ -1,5 +1,4 @@
 from django.db import models
-import uuid
 
 class mst_dev_conn(models.Model):
     id = models.AutoField(auto_created = True,primary_key = True,serialize = False, verbose_name ='ID')
@@ -21,7 +20,7 @@ class mst_dev_addr(models.Model):
     ReadRegisterCount = models.SmallIntegerField()
     registerType = models.CharField(max_length=10)
     fieldDeviceName = models.CharField(max_length=50)
-    
+        
 
 class shift_table(models.Model):
     id = models.AutoField(auto_created = True,primary_key = True,serialize = False, verbose_name ='ID')
@@ -51,12 +50,5 @@ class user_mng(models.Model):
     PassWord = models.CharField(max_length=10)
 
 
-class data_to_db(models.Model):
-    id = models.AutoField(auto_created = True,primary_key = True,serialize = False, verbose_name ='ID')
-    a =  models.IntegerField()
-    b =  models.IntegerField()
-    c =  models.IntegerField()
-    d =  models.IntegerField()
-    e =  models.IntegerField()
-    f =  models.IntegerField()
+
 

@@ -1,8 +1,14 @@
 from .models import mst_dev_conn,units_table,mst_dev_addr,shift_table,mst_data,user_level,user_mng
-from .serializers import mst_dev_conn_serializer,units_table_serializer,mst_dev_addr_serializer,shift_table_serializer,mst_data_serializer,user_level_serializer,user_mng_serializer
+from .serializers import mst_dev_conn_serializer,units_table_serializer,mst_dev_addr_serializer,shift_table_serializer,mst_data_serializer,user_level_serializer,user_mng_serializer,RegisterSerializer
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
+from rest_framework import generics, permissions
+from knox.models import AuthToken
+from django.contrib.auth import login
+from rest_framework import permissions
+from rest_framework.authtoken.serializers import AuthTokenSerializer
+from knox.views import LoginView as KnoxLoginView
 
 class mst_dev_conn_API(APIView):
     def get(self, request,pk=None,format = None):
@@ -207,4 +213,29 @@ class user_mng_API(APIView):
         usermng = user_mng.objects.get(pk=id)
         usermng.delete()
         return Response({'User Deleted Successfully'})
+
+# FOR USER MANAGEMENT
+# Register API
+class RegisterAPI(generics.GenericAPIView): # this api is for registering the user with username and password
+    serializer_class = RegisterSerializer
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        return Response({
+        "user": user_mng_serializer(user, context=self.get_serializer_context()).data,
+        "token": AuthToken.objects.create(user)[1]
+        })
+
+
+class LoginAPI(KnoxLoginView):
+    permission_classes = (permissions.AllowAny,)
+
+    def post(self, request, format=None):
+        serializer = AuthTokenSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data['user']
+        login(request, user)
+        return super(LoginAPI, self).post(request, format=None)
     
